@@ -8,5 +8,4 @@ Projet basé sur des **maquettes Figma** et un jeu de **données mockées** (`sr
 ```bash
 npm install
 npm run dev
-
 ```
