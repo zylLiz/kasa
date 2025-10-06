@@ -1,0 +1,23 @@
+@use "./variables" as *;
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: #fff;
+  color: #111;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* conteneur central */
+#root {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* zone des pages */
+.main {
+  min-height: 60vh;
+  padding: 24px 0;
+}
