@@ -1,10 +1,11 @@
-// Footer simple (on stylisera avec Sass plus tard)
-function Footer() {
+import logoWhite from "../assets/logo_white.svg";
+
+export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} Kasa. All rights reserved </p>
+      <img className="footer__logo" src={logoWhite} alt="Kasa logo" />
+      <p className="footer__copy">© {year} Kasa. All rights reserved </p>
     </footer>
   );
 }
-
-export default Footer;

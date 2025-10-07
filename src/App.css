@@ -75,12 +75,12 @@
 .nav__link--active { border-bottom-color: #111; }
 
 /* ---- footer ---- */
-.footer {
+/*.footer {
   border-top: 1px solid #eee;
   padding: 24px 0;
   text-align: center;
   color: #555;
-}
+}*/
 
 /* ---- petit correctif : évite le centrage global ---- */
 body { margin: 0; background: #fff; color: #111; }
