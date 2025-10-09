@@ -2,7 +2,7 @@
 // Exemple : pour "/" (Home) ou "/about" (About), leur contenu sera rendu à la place de <Outlet />
 import { Outlet } from "react-router-dom";
 
-// Composants persistants : on veut voir le Header et le Footer sur TOUTES les pages
+// Composants persistants :  voir le Header et le Footer sur TOUTES les pages
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 

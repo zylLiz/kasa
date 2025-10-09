@@ -12,9 +12,6 @@ import About from "../pages/About";
 import Logement from "../pages/Logement";
 import Error from "../pages/Error";
 
-// IMPORTANT : App.jsx ne sera plus rendu, donc on importe ici les styles globaux
-import "../App.css";
-
 export default function AppRouter() {
   return (
     <BrowserRouter>

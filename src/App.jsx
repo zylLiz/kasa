@@ -10,8 +10,6 @@ import Error from "./pages/Error";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-//important : importer le CSS
-import "./App.css";
 
 function App() {
   return (
