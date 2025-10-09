@@ -1,11 +1,10 @@
 @use "../variables" as v;
 
 .header {
-  background:#fff; }
+  background:#fff; border-bottom: 1px solid #eee; }
 
-.header__inner {
-  padding: 16px 0;
-  min-height: 68px;
+.header__inner { /*desktop/tablette*/
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,7 +15,7 @@
 
 .nav {
     display: flex;
-    gap: 32px;
+    gap: 24px;
 }
 
 .nav__link {
@@ -32,12 +31,16 @@
 .nav__link:hover { border-bottom-color: #ccc; }
 .nav__link--active { border-bottom-color: #111; }
 
+/*Tablette*/
 @media (max-width: 768px) {
   .header__logo { height: 32px; }
   .nav { gap: 20px; }
 }
 
-@media (max-width: 560px) {
-  .header__inner { padding: 12px 0; }
-  .nav { gap: 16px; }
+/*mobile* environ 335px*/
+@media (max-width: 480px) {
+  .header__inner { height: 48px; }     /* hauteur maquette */
+  .header__logo  { height: 28px; }     /* logo mobile */
+  .nav           { gap: 16px; }
+  .nav__link     { font-size: 14px; padding-bottom: 4px; }
 }
