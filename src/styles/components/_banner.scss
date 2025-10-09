@@ -1,0 +1,29 @@
+.banner {
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+.banner__img {
+  width: 100%;
+  height: 223px;            /* maquette desktop */
+  object-fit: cover;
+  display: block;
+}
+.banner::after {            /* voile sombre */
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.35);
+}
+.banner__title {
+  position: absolute; inset: 0; 
+  display: grid; place-items: center;
+  color: #fff; font-weight: 700;
+  font-size: 48px; text-align: center;
+  padding: 0 16px;
+}
+
+@media (max-width: 768px) {
+  .banner__img { height: 160px; }
+  .banner__title { font-size: 24px; }
+}
