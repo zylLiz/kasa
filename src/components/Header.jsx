@@ -9,7 +9,7 @@ function Header() {
       //Le header englobe la barre du haut
       <header className="header">
         {/* Conteneur interne pour aligner logo + menu */}
-        <div className="header__inner">
+        <div className="header__inner container">
           <Link to="/" className="header__logo-link" aria-label="Kasa, retour à l'accueil">
             <picture>
               <source media="(max-width: 768px)" srcSet={logoMobile} />

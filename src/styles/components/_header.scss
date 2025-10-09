@@ -1,20 +1,14 @@
 @use "../variables" as v;
 
 .header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: #fff;;
-}
+  background:#fff; }
 
 .header__inner {
-    width: 100%;
-    margin: 0 auto;
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
+  padding: 16px 0;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header__logo-link { display: inline-flex; align-items: center; }
@@ -22,22 +16,28 @@
 
 .nav {
     display: flex;
-    gap: 24px;
+    gap: 32px;
 }
 
 .nav__link {
-    text-decoration: none;
-    color: #111;
-    padding: 6px 2px;
-    border-bottom: 2px solid transparent; //pour éviter le "saut" quand on ajoute la bordure
-    font-weight: 500;
+  text-decoration: none;
+  color:#111;
+  line-height: 1;
+  font-weight: 500;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s ease;
 }
 
-.nav__link:hover { border-bottom-color: #ddd; }
+.nav__link:hover { border-bottom-color: #ccc; }
 .nav__link--active { border-bottom-color: #111; }
 
 @media (max-width: 768px) {
-    .header__inner { padding: 12px 16px; }
-    .header__logo { height: 30px; }
-    .nav { gap: 16px; }
+  .header__logo { height: 32px; }
+  .nav { gap: 20px; }
+}
+
+@media (max-width: 560px) {
+  .header__inner { padding: 12px 0; }
+  .nav { gap: 16px; }
 }
