@@ -3,10 +3,20 @@
 
 
 .footer__logo  { height:40px; }
-.footer__copy { margin:0; opacity:.7; font-size:14px; text-align:center; }
+.footer__copy { margin:0; opacity:.7; font-size:14px; text-align:center; line-height: 1.4;}
 
 @media (min-width: 768px) {
   .footer__inner { padding: 48px 0; }
   .footer__logo  { height: 32px; }
-  .footer__copy  { font-size: 12px; }
+  .footer__copy  { font-size: 14px; }
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .footer__copy {
+    max-width: 135px;   /* largeur maquette */
+    margin-inline: auto; /* centre le bloc */
+    /* Variante possible :
+       inline-size: 18ch;  // contraint à ~18 caractères par ligne */
+  }
 }
