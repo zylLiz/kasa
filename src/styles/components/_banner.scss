@@ -20,7 +20,6 @@
   object-fit: cover;
   display: block;
   object-position: 50% 51%;
-  /*background: rgba(246, 246, 246, 1);*/
 }
 .banner::after {            /* voile sombre */
   content: "";
@@ -58,13 +57,13 @@
 
 /* Mobile / Tablet */
 @media (max-width: 768px) {
-  .banner { height: 111px; border: 16px; }  /* maquette mobile */
+  .banner { height: 111px; border: 16px; box-shadow: none; }  /* maquette mobile */
   .banner__title { 
     font-size: 22px;  
     line-height: 30px;
     text-align: left; 
     padding: 16px 8px; 
-    max-width: 225px;          /* ~133% pour 24px, ajustable */ 
-                 
+    max-width: 225px; 
+    text-shadow: none;                
   }
 }
