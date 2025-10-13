@@ -10,7 +10,7 @@ export default function RootLayout() {
   return (
     <>
       <Header />
-      <main className="main container">
+      <main className="main">
         {/* Ici s’affichent Home, About, Logement… */}
         <Outlet />
       </main>

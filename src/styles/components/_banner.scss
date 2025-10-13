@@ -1,29 +1,70 @@
+@use "../variables" as v;
+
 .banner {
   position: relative;
+  display: block;
+  width: 100%;
+  height: 223px;
   border-radius: 25px;
   overflow: hidden;
-  margin: 24px 0;
+  margin: 24px auto;
+  /* Ombre Figma : X=0, Y=4, Blur=4, Spread=0, rgba(0,0,0,.25) */
+  box-shadow: 0 4px 4px rgba(0,0,0,.25);
 }
+
+.banner picture { display: block; width: 100%; height: 100%; }
+
 .banner__img {
   width: 100%;
-  height: 223px;            /* maquette desktop */
+  height: 100%;            /* desktop*/
   object-fit: cover;
   display: block;
+  object-position: 50% 51%;
+  /*background: rgba(246, 246, 246, 1);*/
 }
 .banner::after {            /* voile sombre */
   content: "";
   position: absolute; inset: 0;
-  background: rgba(0,0,0,.35);
-}
-.banner__title {
-  position: absolute; inset: 0; 
-  display: grid; place-items: center;
-  color: #fff; font-weight: 700;
-  font-size: 48px; text-align: center;
-  padding: 0 16px;
+  background: rgba(0,0,0,.5);
+  /*z-index: 0;*/
 }
 
+.banner__title {
+  position: absolute; 
+  inset: 0; 
+  display: grid; 
+  place-items: center;
+  margin: 0;
+  text-align: center;
+  padding: 0 16px;
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+  /*typo figma*/
+  font-family: "Montserrat", -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 48px; 
+  line-height: 68px; /*figma*/
+  letter-spacing: 0;
+  /* Contour (Borders 1px noir dans Figma) */
+  -webkit-text-stroke: rgba(0,0,0,1); 
+   /* L’ombre Figma (et un léger relief) */
+  text-shadow:
+    0 0 0 #000,
+    0 1px 0 #000, 1px 0 0 #000, 0 -1px 0 #000, -1px 0 0 #000,
+    1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000,
+    0 0 4px rgba(0,0,0,.25);
+
+}
+
+/* Mobile / Tablet */
 @media (max-width: 768px) {
-  .banner__img { height: 160px; }
-  .banner__title { font-size: 24px; }
+  .banner { height: 111px; border: 16px; }  /* maquette mobile */
+  .banner__title { 
+    font-size: 22px;  
+    line-height: 30px;
+    text-align: left; 
+    padding: 16px 8px; 
+    max-width: 225px;          /* ~133% pour 24px, ajustable */ 
+                 
+  }
 }
