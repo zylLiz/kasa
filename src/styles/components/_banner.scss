@@ -57,7 +57,7 @@
 
 /* Mobile / Tablet */
 @media (max-width: 768px) {
-  .banner { height: 111px; border: 16px; box-shadow: none; }  /* maquette mobile */
+  .banner { height: 111px; border: 16px; box-shadow: none; border-radius: 10px; }  /* maquette mobile */
   .banner__title { 
     font-size: 22px;  
     line-height: 30px;
@@ -66,4 +66,7 @@
     max-width: 225px; 
     text-shadow: none;                
   }
+   picture,
+  .banner__img,
+  .banner::after { border-radius: inherit; }
 }
