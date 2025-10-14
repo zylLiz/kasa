@@ -20,11 +20,13 @@ export default function AppRouter() {
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />              {/* "/" */}
           <Route path="about" element={<About />} />      {/* "/about" */}
-          <Route path="logement/:id" element={<Logement />} />
-        </Route>
+          <Route path="logement/:id" element={<Logement />} /> {/* "/logement/123" */}
 
         {/* 404 pour toute autre URL */}
-        <Route path="*" element={<Error />} />
+          <Route path="*" element={<Error />} />
+          {/* (optionnel) route explicite /404 */}
+          {/* <Route path="404" element={<Error />} /> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   );

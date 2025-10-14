@@ -1,0 +1,54 @@
+@use "../variables" as v;
+
+.error{
+  /* centre verticalement dans la zone main */
+  min-height: min(520px, 70vh);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 24px;
+  padding: 24px 16px;
+  /* >>> tout le texte en orange Kasa */
+  color: v.$red;
+}
+
+.error__code{
+  margin: 0;
+  font-family: "Montserrat", -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 700;                 /* Figma 700 */
+  font-size: 288px;                 /* Figma desktop */
+  line-height: 1; 
+  color: v.$red;                    /* #FF6060 */
+}
+
+.error__text{
+  margin: 0;
+  font-weight: 500;                 /* Figma 500 */
+  font-size: 36px;                  /* Figma 36px */
+  line-height: 1.43;                /* Figma 143% */
+}
+
+/* Lien noir (même si le parent est orange) */
+.error__link,
+.error__link:visited {
+  color: #111;                 /* noir */
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.error__link:hover {
+  color: #000;                 /* un poil plus foncé au survol */
+  text-decoration-thickness: 2px;
+}
+
+.error__link:focus-visible {
+  outline: 2px dashed #111;
+  outline-offset: 2px;
+}
+
+/* Responsive (maquette mobile) */
+@media (max-width: 768px){
+  .error{ gap: 16px; min-height: 60vh; }
+  .error__code{ font-size: 96px; }      /* lisible sur mobile */
+  .error__text{ font-size: 18px; }
+}
