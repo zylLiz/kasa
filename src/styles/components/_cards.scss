@@ -1,0 +1,86 @@
+/* ====== DEBUG TEMPORAIRE (à enlever après) ====== */
+/*.cards-section { outline: 2px dashed #4c8bf5; }  bleu */
+/* .cards          { outline: 2px dashed #f5426c; }   rose */
+/*.card           { outline: 1px solid  #43a047; }   vert */
+
+
+/* === Conteneur gris (bloc Gallery) === */
+.cards-section{
+  background:#F6F6F6;
+  border-radius:25px;
+  padding:16px;
+  margin:32px 0;
+  height:auto;        /* (2 rangées visibles comme Figma) */
+  overflow:visible;  /* (scroll plus tard si besoin) */
+}
+
+/* === Grille === */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3, 340px);
+  column-gap:50px;
+  row-gap:50px;
+  width: 1120px;
+  margin: 16px;
+  align-content:start;
+}
+
+/* === Card (desktop) === */
+.card{
+  position:relative;
+  width:340px;              
+  height:340px;             
+  border-radius:10px;
+  overflow:hidden;
+  background:#f6f6f6;
+}
+
+/* Enfant et overlay (global, pas dans le media) */
+.card__link{
+  display:block;
+  width:100%;
+  height:100%;
+  position:relative;
+  border-radius: inherit;
+}
+.card__img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+  object-position: 50% 40%;
+  border-radius: inherit;
+}
+.card__link::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,0) 40%, rgba(0,0,0,.6) 100%);
+  pointer-events:none;
+}
+.card__title{
+  position:absolute; left:16px; right:16px; bottom:16px;
+  color:#fff; font-weight:700; font-size:18px; line-height:1.2;
+}
+
+
+/* === Tablet / Mobile === */
+@media (max-width:1024px){
+  /*.cards-section{ height:auto; overflow:visible; padding: 16px; }*/
+  .cards-section{
+    height:auto;           /* on montre toutes les cartes */
+    overflow:visible;
+    padding:16px;
+  }
+  .cards{
+    width: auto;
+    margin: 0;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    column-gap:24px; row-gap:24px;
+    justify-content:stretch;
+  }
+  .card{ width:100%; height:auto; aspect-ratio:1/1; }  /* reste carré en fluide */
+}
+@media (max-width:768px){
+  .cards-section{ background:transparent; border-radius:0; padding:0; margin:24px 0; }
+  .cards{ grid-template-columns:1fr; gap:16px; }
+  .card__title{ font-size:16px; }
+}

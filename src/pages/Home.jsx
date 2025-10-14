@@ -4,6 +4,7 @@
 import logements from "../data/logements.json";
 import Banner from "../components/Banner";
 import homeBanner from "../assets/banner_home.png";
+import CardsGrid from "../components/CardsGrid";
 
 
 export default function Home() {
@@ -19,8 +20,7 @@ export default function Home() {
             />
         
         {/* Ici, mettre bientôt la grille de cards générée depuis `logements` */}
-        {/* <CardsGrid data={logements} /> */}
-     
+            <CardsGrid data={logements} /> 
         </>
     );
 }
