@@ -31,7 +31,33 @@
 }
 
 @media (max-width:768px){
+  /* La zone header passe en colonne */
   .lodg-head{ flex-direction:column; align-items:flex-start; gap:16px; }
+   /* La “colonne droite” devient une ligne : étoiles à gauche, hôte à droite */
+  
+   .lodg-head__right{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  /* Forcer l’ordre : rating d’abord, puis hôte */
+  .lodg-head__right .rating{ 
+    order: 0; 
+    margin: 0;                   /* pas de centrage */
+    --star-size: 18px;           /* tailles maquette mobile */
+    --star-gap: 6px;
+  }
+  .lodg-head__right .host{ 
+    order: 1; 
+    margin-left: auto; 
+  }
+
+  /* Typo/tailles mobile */
   .lodg-title{ font-size:18px; }
   .lodg-city{ font-size:14px; }
   .host__name{ font-size:14px; }

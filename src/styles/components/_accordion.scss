@@ -69,6 +69,38 @@ $chev: url("../../assets/chevron_carrousel.svg");
 
 /* Mobile */
 @media (max-width: 768px){
-  .acc__btn{ height: 44px; }
-  .acc__icon{ width: 24px; height: 24px; }
+  /* Bouton de l’accordéon */
+  .acc__btn{
+    /* on neutralise la grille desktop */
+    display: grid;
+    height: 32px;
+    padding: 0px 12px;      /* on réserve la place du chevron à droite */
+    grid-template-columns: 1fr 24px; /* titre à gauche, chevron à droite */
+    align-items: center;
+    text-align: left;      
+    position: relative;
+  }
+
+  .acc__title{
+    font: 600 12px/1 "Montserrat", sans-serif; /* plus petit en mobile */
+  }
+
+  /* Chevron : fixé à droite, centré verticalement */
+  .acc__icon{
+    position: static; /* on sort du flux normal */
+    width: 24px;
+    height: 24px;
+    transform: rotate(-90deg);       /* fermé = vers le haut */
+  }
+  .is-open .acc__icon{
+    transform: rotate(90deg);        /* ouvert = vers le bas */
+  }
+
+  /* Panneau */
+  .acc__panel{
+    font-size: 14px;
+    line-height: 1.45;
+    padding: 12px;
+    text-align: left;        /* contenu à gauche (comme la maquette) */
+  }
 }
