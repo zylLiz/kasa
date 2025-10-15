@@ -1,17 +1,74 @@
-.lodg-details{
-  display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-top:24px;
-}
-.accordion{ border-radius:5px; overflow:hidden; background:#F6F6F6; }
-.acc-head{
-  width:100%; height:52px; padding:0 16px;
-  display:flex; align-items:center; justify-content:space-between;
-  background:#FF6060; color:#fff; font-weight:700;
-}
-.acc-ico{ transition:transform .2s ease; }
-.is-open .acc-ico{ transform:rotate(180deg); }
-.acc-panel{ padding:16px; display:none; }
-.is-open .acc-panel{ display:block; background:#fff; }
+@use "../variables" as v;
 
-@media (max-width:768px){
-  .lodg-details{ grid-template-columns: 1fr; gap:16px; }
+/* même fichier que le carrousel, chemin relatif depuis _accordion.scss */
+$chev: url("../../assets/chevron_carrousel.svg");
+
+.acc {
+  /* option : pour gérer un petit spacing vertical entre accordéons */
+  margin-block: 8px;
+}
+
+.acc__btn{
+  /* style bouton maquette */
+  width: 100%;
+  height: 52px;
+  border: 0;
+  border-radius: 8px;
+  background: v.$red;          /* barre rouge Figma */
+  color: #fff;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto; /* titre à gauche, icône à droite */
+  gap: 12px;
+  padding: 0 16px;
+  cursor: pointer;
+
+  /* neutraliser les styles natifs */
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* focus clavier propre, sans halo au clic */
+  &:focus { outline: none; }
+  &:focus-visible {
+    outline: 2px solid #fff;   /* repère clavier discret */
+    outline-offset: 2px;
+  }
+}
+
+.acc__title{
+  font: 600 16px/1 "Montserrat", sans-serif;
+}
+
+.acc__icon{
+  width: 32px;
+  height: 32px;
+  background: #fff;                           /* la flèche sera blanche */
+  -webkit-mask: $chev center / contain no-repeat;
+  mask: $chev center / contain no-repeat;
+
+  /* Le SVG d’origine pointe vers la DROITE.
+     Fermé = flèche vers le HAUT (rotate 90deg)
+     Ouvert = flèche vers le BAS (rotate -90deg)
+  */
+  transform: rotate(-90deg);
+  transition: transform .2s ease;
+}
+
+/* Quand c'est ouvert, on pivote en bas */
+.is-open .acc__icon{
+  transform: rotate(90deg);
+}
+
+/* Contenu de l’accordéon */
+.acc__panel{
+  background: #fff;
+  border-radius: 0 0 8px 8px;
+  padding: 16px;
+  color: #111;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .acc__btn{ height: 44px; }
+  .acc__icon{ width: 24px; height: 24px; }
 }

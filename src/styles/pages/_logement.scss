@@ -6,7 +6,7 @@
 }
 
 /* Titres / Ville */
-.lodg-title{ font:700 36px/1 "Montserrat", sans-serif; margin:0 0 8px; }
+.lodg-title{ font:700 36px/1 "Montserrat", sans-serif; margin:0 0 8px; color: v.$red; }
 .lodg-city { font:500 18px/1.43 "Montserrat", sans-serif; margin:0 0 12px; }
 
 /* Tags */
@@ -22,6 +22,14 @@
 .host__name{ font:500 18px/1 "Montserrat", sans-serif; text-align:right; }
 .host__pic{ width:64px; height:64px; border-radius:50%; object-fit:cover; }
 
+/* ====== Détails (les 2 accordéons) ====== */
+.lodg-details{
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 2 colonnes côte à côte */
+  margin-top: 16px;
+  gap: 24px;                        /* espace entre les 2 */
+}
+
 @media (max-width:768px){
   .lodg-head{ flex-direction:column; align-items:flex-start; gap:16px; }
   .lodg-title{ font-size:18px; }
@@ -29,4 +37,6 @@
   .host__name{ font-size:14px; }
   .host__pic{ width:32px; height:32px; }
   .tag{ height:22px; font-size:12px; }
+  .lodg-details{ grid-template-columns: 1fr; }  /* empilé en mobile */
+
 }
