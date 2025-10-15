@@ -1,11 +1,22 @@
-@use "./variables";
+/* 1) Variables et reset/base */
+@use "./variables" as *;
 @use "./base";
+
+/* 2) Layout commun */
 @use "./components/header";
 @use "./components/footer";
+
+/* 3) Composants réutilisables */
 @use "./components/banner";
 @use "./components/cards";
-@use "./components/error" as *;
-/*@use "./components/card";*/
+@use "./components/error";
+@use "./components/rating";
+@use "./components/carousel";
+@use "./components/accordion";
+
+/* 4) Styles de pages */
+@use "./pages/logement";
+
 /* plus tard quand j'importerais d’autres fichiers:
 @use "./components/collapse";
 */
