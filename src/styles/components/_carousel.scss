@@ -79,12 +79,15 @@ $chevron-url: url("../../assets/chevron_carrousel.svg");
 /* Compteur */
 .car-count{
   position: absolute;
-  right: 16px;
+  left: 50%;
   bottom: 12px;
+  transform: translateX(-50%);
   color: #fff;
   font-weight: 600;
+  font-size: 14px;
   text-shadow: 0 1px 2px rgba(0,0,0,.5);
   z-index: 4;
+  pointer-events: none; /* évite de gêner les clics sur l'image */
 }
 
 /* Mobile */
@@ -92,7 +95,7 @@ $chevron-url: url("../../assets/chevron_carrousel.svg");
   .carousel{ height: 255px; border-radius: 10px; }
   .car-btn{ width: 72px; }
   .car-btn::before{ width: 44px; height: 55px; }
-  .car-count{ font-size: 12px; }
+  .car-count{ display: none; }
   .car-btn--prev { left: 8px; }
   .car-btn--next { right: 8px; }
 }
