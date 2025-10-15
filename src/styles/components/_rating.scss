@@ -1,8 +1,10 @@
 .rating{ display:flex; align-items:center; gap:var(--star-gap, 8px); }
+
 .rating .star{
   width:var(--star-size, 36px); height:var(--star-size, 36px);
   flex:0 0 var(--star-size, 36px); fill:var(--star-empty, #C4C4C4);
 }
+
 .rating .star.is-full{ fill:var(--star-full, #FF6060); }
 
 @media (max-width:768px){

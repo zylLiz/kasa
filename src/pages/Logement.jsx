@@ -16,8 +16,14 @@ export default function Logement() {
 
   const { title, location, pictures, tags, host, rating, description, equipments } = item;
 
+// Découpage robuste du nom "Prénom Nom ..." -> prénom + reste
+  const parts = String(host?.name || "").trim().split(/\s+/);
+  const firstName = parts[0] || "";
+  const lastName = parts.slice(1).join(" ");
+  
+  
 return (
-     <section className="logement">
+    <section className="logement">
       <Carousel images={pictures} alt={title} />
 
       <header className="lodg-head">
@@ -30,12 +36,16 @@ return (
           </ul>
         </div>
 
-        <div className="lodg-head__right">
+         <div className="lodg-head__right">
           <div className="host">
-            <div className="host__name">{host.name}</div>
+            <div className="host__name" aria-label={`Hôte : ${host.name}`}>
+              <span className="host__first">{firstName}</span>
+              {lastName && <span className="host__last">{lastName}</span>}
+            </div>
             <img className="host__pic" src={host.picture} alt={host.name} />
           </div>
-          <RatingStars value={Number(rating)} />
+
+          <RatingStars value={Number(rating)} ariaLabel="Note" />
         </div>
       </header>
 
@@ -43,6 +53,7 @@ return (
         <Accordion title="Description">
           <p>{description}</p>
         </Accordion>
+        
         <Accordion title="Équipements">
           <ul className="equip-list">
             {equipments.map((e,i) => <li key={i}>{e}</li>)}
