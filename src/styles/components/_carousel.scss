@@ -1,24 +1,98 @@
+/* 1-variable SVG : doit être définie avant usage*/
+$chevron-url: url("../../assets/chevron_carrousel.svg");
+
+/*2.Conteneur image*/
 .carousel{
-  position:relative; margin-top:16px;
-  border-radius:25px; overflow:hidden;
-  height:415px;               /* Figma desktop */
+  position: relative;
+  margin-top: 16px;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 415px;                    /* Figma desktop */
+  background: #eee;                 /* évite “flash” au chargement */
 }
+
+.carousel__frame{
+  height: 100%;                 /* pour que l’img remplisse bien */
+}
+
 .carousel__frame img{
-  width:100%; height:100%; object-fit:cover; display:block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
+
+/* par sécurité on neutralise aussi l’outline sur l’image */
+.carousel__frame img:focus { outline: none; }
+
+/* Boutons chevrons carousel*/
+
+
 .car-btn{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:48px; height:48px; border:none; background:rgba(0,0,0,.35);
-  mask:url('src/assets/chevron_carrousel.svg') center/24px 24px no-repeat; /* ou ::before avec SVG inline */
-  cursor:pointer; border-radius:50%;
+  position: absolute;
+  inset-block: 0;
+  width: 96px;                  /* maquette */
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;   /* pas de cercle */
+  cursor: pointer;
+  z-index: 5;
+  line-height: 0;
+  display: grid;
+  place-items: center;
+
+  /* neutralise tout style natif */
+  appearance: none;
+  -webkit-appearance: none;
+
+/* pas d’ombre ni de fond au survol */
+  &:hover,
+  &:active { background: transparent; }
+
+  /* focus seulement au clavier */
+  &:focus{ outline: none; }
+  &:focus-visible{
+    outline: 2px solid #fff;      /* si tu veux un repère clavier */
+    outline-offset: 2px;
+  }  
+  
+  &::before{
+    content: "";
+    position: absolute;
+    width: 96px;                 /* taille réelle de la flèche */
+    height: 120px;
+    background: #fff;            /* couleur de la flèche */
+    -webkit-mask: $chevron-url center / contain no-repeat;
+    mask: $chevron-url center / contain no-repeat;
+    /* aide la lisibilité sur fond clair, optionnel */
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.45));
+  }
 }
-.car-btn--prev{ left:16px; transform:translateY(-50%) rotate(180deg); }
-.car-btn--next{ right:16px; }
+
+.car-btn--prev { left: 26px;  }
+.car-btn--next { right: 26px; }
+
+/* si le SVG pointe vers la droite, on flippe la flèche gauche */
+.car-btn--prev::before { transform: scaleX(-1); }
+
+/* Compteur */
 .car-count{
-  position:absolute; right:16px; bottom:12px;
-  color:#fff; font-weight:600; text-shadow:0 1px 2px rgba(0,0,0,.5);
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  z-index: 4;
 }
-@media (max-width:768px){
-  .carousel{ height:255px; border-radius:10px; }
-  .car-btn{ width:36px; height:36px; }
+
+/* Mobile */
+@media (max-width: 768px){
+  .carousel{ height: 255px; border-radius: 10px; }
+  .car-btn{ width: 72px; }
+  .car-btn::before{ width: 44px; height: 55px; }
+  .car-count{ font-size: 12px; }
+  .car-btn--prev { left: 8px; }
+  .car-btn--next { right: 8px; }
 }

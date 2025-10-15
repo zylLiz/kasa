@@ -2,19 +2,40 @@ import { useState } from "react";
 
 export default function Carousel({ images = [], alt = "" }) {
   const [i, setI] = useState(0);
-  const len = images.length || 1;
+  const many = images.length > 1;
 
-  const prev = () => setI((i - 1 + len) % len);
-  const next = () => setI((i + 1) % len);
+  const prev = () => many && setI((n) => (n - 1 + images.length) % images.length);
+  const next = () => many && setI((n) => (n + 1) % images.length);
 
   return (
-    <div className="carousel" aria-roledescription="carousel">
-      {len > 1 && <button className="car-btn car-btn--prev" onClick={prev} aria-label="Image précédente" />}
-      <picture className="carousel__frame">
-        <img src={images[i]} alt={alt} />
-      </picture>
-      {len > 1 && <button className="car-btn car-btn--next" onClick={next} aria-label="Image suivante" />}
-      {len > 1 && <div className="car-count">{i+1}/{len}</div>}
-    </div>
+    <section className="carousel" aria-label={alt || "Galerie"}>
+      <div className="carousel__frame">
+        <img
+          src={images[i]}
+          alt={alt ? `${alt} — image ${i + 1} sur ${images.length}` : `Image ${i + 1}`}
+          draggable={false}
+        />
+      </div>
+
+      {many && (
+        <>
+          <button
+            type="button"
+            className="car-btn car-btn--prev"
+            onClick={prev}
+            aria-label="Image précédente"
+          />
+          <button
+            type="button"
+            className="car-btn car-btn--next"
+            onClick={next}
+            aria-label="Image suivante"
+          />
+          <div className="car-count" aria-hidden="true">
+            {i + 1}/{images.length}
+          </div>
+        </>
+      )}
+    </section>
   );
 }
