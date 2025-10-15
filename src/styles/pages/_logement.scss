@@ -21,7 +21,7 @@
 .host{ display:flex; align-items:center; gap:10px; }
 .host__name{ font:500 18px/1 "Montserrat", sans-serif; text-align:right; gap:6px; }
 .host__first{ color:v.$red; }
-.host__last{  color:#111; }
+.host__last{  color:v.$red; }
 .host__pic{ width:64px; height:64px; border-radius:50%; object-fit:cover; }
 
 /* ====== Détails (les 2 accordéons) ====== */

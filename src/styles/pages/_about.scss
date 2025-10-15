@@ -1,0 +1,31 @@
+@use "../variables" as v;
+
+.about{
+  max-width: v.$container;   
+  margin-inline: auto;
+  padding: 0 24px 48px;
+}
+
+.about-banner{
+  height: 223px;                         /* hauteur desktop maquette */
+  border-radius: 25px;
+  background: url("/src/assets/about.png") center/cover no-repeat; 
+  margin: 24px 0 32px;
+}
+
+.about-list{
+  display: grid;
+  gap: 24px;                              /* espace vertical entre items */
+}
+
+@media (max-width: 768px){
+  .about{ padding: 0 16px 32px; }
+
+  .about-banner{
+    height: 111px;                        /* maquette mobile */
+    border-radius: 10px;
+    margin: 16px 0 24px;
+  }
+
+  .about-list{ gap: 16px; }
+}
