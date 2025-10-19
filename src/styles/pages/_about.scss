@@ -1,21 +1,31 @@
 @use "../variables" as v;
 
+/* Conteneur page */
 .about{
   max-width: v.$container;   
   margin-inline: auto;
   padding: 0 24px 48px;
 }
 
+/* Bannière */
 .about-banner{
   height: 223px;                         /* hauteur desktop maquette */
   border-radius: 25px;
-  background: url("/src/assets/about.png") center/cover no-repeat; 
+  background: url("../../assets/about.png") center/cover no-repeat; 
   margin: 24px 0 32px;
 }
 
-.about-list{
-  display: grid;
-  gap: 24px;                              /* espace vertical entre items */
+/* Variante wide appliquée uniquement sur la page À propos */
+/* Liste des blocs (wrapper) */
+.about-list {
+  margin-top: 16px;
+
+  /* Le wrapper force la largeur des accordéons enfants => n’impacte PAS les accordéons de la page Logement */
+  .acc--wide .acc{
+    /*width: 100%;*/
+    max-width: 1023px;    /* maquette desktop À propos */
+    margin: 0 auto 20px;
+  }
 }
 
 @media (max-width: 768px){
@@ -27,5 +37,8 @@
     margin: 16px 0 24px;
   }
 
-  .about-list{ gap: 16px; }
+  .about-list .acc--wide .acc{
+    max-width: 335px;     /* maquette mobile À propos */
+    margin: 0 auto 14px;
+  }
 }

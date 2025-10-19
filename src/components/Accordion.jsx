@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export default function Accordion({ title, children, defaultOpen = false }) {
-  const [open, setOpen] = useState(defaultOpen);
+export default function Accordion({ title, children, className = "" }) {
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className={`acc ${open ? "is-open" : ""}`}>
+    <section className={`acc ${className} ${open ? "is-open" : ""}`}>
       <button
         type="button"
         className="acc__btn"
@@ -19,6 +19,6 @@ export default function Accordion({ title, children, defaultOpen = false }) {
       <div className="acc__panel" hidden={!open}>
         {children}
       </div>
-    </div>
+    </section>
   );
 }

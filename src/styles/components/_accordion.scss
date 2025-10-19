@@ -3,6 +3,11 @@
 /* même fichier que le carrousel, chemin relatif depuis _accordion.scss */
 $chev: url("../../assets/chevron_carrousel.svg");
 
+/* --- Alignement : on coupe tout centrage hérité et on force à gauche --- */
+.acc,
+.acc__btn,
+.acc__panel { text-align: left; }
+
 .acc {
   /* option : pour gérer un petit spacing vertical entre accordéons */
   margin-block: 8px;
@@ -76,8 +81,7 @@ $chev: url("../../assets/chevron_carrousel.svg");
     height: 32px;
     padding: 0px 12px;      /* on réserve la place du chevron à droite */
     grid-template-columns: 1fr 24px; /* titre à gauche, chevron à droite */
-    align-items: center;
-    text-align: left;      
+    align-items: center;   
     position: relative;
   }
 
@@ -101,6 +105,5 @@ $chev: url("../../assets/chevron_carrousel.svg");
     font-size: 14px;
     line-height: 1.45;
     padding: 12px;
-    text-align: left;        /* contenu à gauche (comme la maquette) */
   }
 }
