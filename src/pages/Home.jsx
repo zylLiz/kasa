@@ -8,7 +8,7 @@ import CardsGrid from "../components/CardsGrid";
 
 
 export default function Home() {
-    console.log("nb logements =", logements.length); // doit afficher 20
+   /* console.log("nb logements =", logements.length); // doit afficher 20*/
     
     return ( 
         <>
