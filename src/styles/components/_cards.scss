@@ -55,16 +55,17 @@
   content:""; position:absolute; inset:0;
   background:linear-gradient(180deg, rgba(255,255,255,0) 40%, rgba(0,0,0,.6) 100%);
   pointer-events:none;
+  z-index: 1;
 }
 .card__title{
   position:absolute; left:16px; right:16px; bottom:16px;
   color:#fff; font-weight:700; font-size:18px; line-height:1.2;
+  z-index: 2;
 }
 
 
 /* === Tablet / Mobile === */
 @media (max-width:1024px){
-  /*.cards-section{ height:auto; overflow:visible; padding: 16px; }*/
   .cards-section{
     height:auto;           /* on montre toutes les cartes */
     overflow:visible;

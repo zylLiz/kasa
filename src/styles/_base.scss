@@ -10,7 +10,7 @@ body {
   font-family: "Montserrat", -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* conteneur central */
+/* conteneur racine */
 #root {
   display: flex;
   flex-direction: column;
@@ -35,5 +35,4 @@ body {
 }
 
 @media (max-width: 480px) {
-  /*.container { padding: 0 16px; } //mobile}*/
 .main { padding: 16px; } }

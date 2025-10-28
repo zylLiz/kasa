@@ -15,16 +15,16 @@
 .error__code{
   margin: 0;
   font-family: "Montserrat", -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-weight: 700;                 /* Figma 700 */
-  font-size: 288px;                 /* Figma desktop */
+  font-weight: 700;                 
+  font-size: 288px;                 
   line-height: 1; 
-  color: v.$red;                    /* #FF6060 */
+  color: v.$red;                   
 }
 
 .error__text{
   margin: 0;
-  font-weight: 500;                 /* Figma 500 */
-  font-size: 36px;                  /* Figma 36px */
+  font-weight: 500;                 
+  font-size: 36px;                 
   line-height: 1.43;                /* Figma 143% */
 }
 

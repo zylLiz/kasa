@@ -1,20 +1,31 @@
 @use "../variables" as v;
 
+/* === Custom properties pour l'effet rideau === */
+/* portées au composant .acc uniquement */
+:root{
+  --acc-mh-open: 1200px;                 /* espace max ouvert (layout) */
+  --acc-dur: .42s;                       /* durée du “volet/ticket” */
+  --acc-ease: cubic-bezier(.22,1,.36,1); /* easing fluide */
+}
+
+/* ================== Assets ================== */
 /* même fichier que le carrousel, chemin relatif depuis _accordion.scss */
 $chev: url("../../assets/chevron_carrousel.svg");
 
+/* ================== Alignements ================== */
 /* --- Alignement : on coupe tout centrage hérité et on force à gauche --- */
 .acc,
 .acc__btn,
 .acc__panel { text-align: left; }
 
+/* Petit spacing vertical entre accordéons */
 .acc {
-  /* option : pour gérer un petit spacing vertical entre accordéons */
   margin-block: 8px;
+  position: relative;
 }
 
+/* ================== Bouton (header) ================== */
 .acc__btn{
-  /* style bouton maquette */
   width: 100%;
   height: 52px;
   border: 0;
@@ -27,6 +38,8 @@ $chev: url("../../assets/chevron_carrousel.svg");
   gap: 12px;
   padding: 0 16px;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 
   /* neutraliser les styles natifs */
   appearance: none;
@@ -38,25 +51,27 @@ $chev: url("../../assets/chevron_carrousel.svg");
     outline: 2px solid #fff;   /* repère clavier discret */
     outline-offset: 2px;
   }
+
 }
 
 .acc__title{
   font: 600 16px/1 "Montserrat", sans-serif;
 }
 
+/* ================== Icône (chevron) ================== */
 .acc__icon{
   width: 32px;
   height: 32px;
-  background: #fff;                           /* la flèche sera blanche */
+  background: #fff;                           
   -webkit-mask: $chev center / contain no-repeat;
-  mask: $chev center / contain no-repeat;
+          mask: $chev center / contain no-repeat;
 
   /* Le SVG d’origine pointe vers la DROITE.
      Fermé = flèche vers le HAUT (rotate 90deg)
      Ouvert = flèche vers le BAS (rotate -90deg)
   */
   transform: rotate(-90deg);
-  transition: transform .2s ease;
+  transition: transform .3s ease;
 }
 
 /* Quand c'est ouvert, on pivote en bas */
@@ -64,46 +79,82 @@ $chev: url("../../assets/chevron_carrousel.svg");
   transform: rotate(90deg);
 }
 
+/* ================== Panneau (contenu) — base ================== */
 /* Contenu de l’accordéon */
 .acc__panel{
-  background: #fff;
-  border-radius: 0 0 8px 8px;
-  padding: 16px;
-  color: #111;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  padding: 0;                 /* visuel/padding déplacés sur .acc__inner */
+  max-height: 0;              /* fermé = pas d’espace */
+  transition: max-height .18s ease; /* rapide → pas de “déroulage” */
 }
 
-/* Mobile */
+/* Ouvert : on donne l’espace (suffisant pour le contenu) */
+.is-open .acc__panel{
+  max-height: var(--acc-mh-open);
+}
+
+/* ================== Effet "bloc aspiré par le haut, (fond + texte)" ================== */
+.acc__inner{
+  background: #F6F6F6;
+  border-radius: 0 0 5px 5px;
+  padding: 20px 16px;
+
+  /* FERMÉ : “ticket” rangé au-dessus de la fente */
+  transform: translateY(-100%);
+  will-change: transform;
+  transition: transform var(--acc-dur) var(--acc-ease);
+}
+
+
+//* ================== ÉTAT OUVERT ================== */
+.is-open .acc__inner{
+  transform: translateY(0);
+}
+
+/* ================== Effet du contenu ================== */
+.acc__content{
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* anti-saut de marges internes */
+.acc__content > :first-child { margin-top: 0; }
+.acc__content > :last-child  { margin-bottom: 0; }
+
+/* ================== Listes sans puces dans le panneau ================== */
+/* Retirer puces + indentation dans le contenu de l’accordéon */
+.acc__panel :is(ul, ol){
+  list-style:none;
+  margin:0;
+  padding-left:0;
+}
+.acc__panel li::marker{ content:""; }  /*ceinture & bretelles*/
+
+/* ================== Mobile ================== */
 @media (max-width: 768px){
-  /* Bouton de l’accordéon */
+  .acc{
+    --acc-mh-open: 900px;              /* espace un peu réduit en mobile */
+  }
+
   .acc__btn{
-    /* on neutralise la grille desktop */
-    display: grid;
     height: 32px;
-    padding: 0px 12px;      /* on réserve la place du chevron à droite */
-    grid-template-columns: 1fr 24px; /* titre à gauche, chevron à droite */
-    align-items: center;   
-    position: relative;
+    padding: 0 12px;
+    grid-template-columns: 1fr 24px;
+  }
+  
+  .acc__title{ 
+    font: 600 12px/1 "Montserrat", sans-serif; 
   }
 
-  .acc__title{
-    font: 600 12px/1 "Montserrat", sans-serif; /* plus petit en mobile */
+  .acc__icon{ 
+    width: 24px; 
+    height: 24px; 
   }
 
-  /* Chevron : fixé à droite, centré verticalement */
-  .acc__icon{
-    position: static; /* on sort du flux normal */
-    width: 24px;
-    height: 24px;
-    transform: rotate(-90deg);       /* fermé = vers le haut */
+  .acc__inner{ 
+    padding: 16px 12px; 
   }
-  .is-open .acc__icon{
-    transform: rotate(90deg);        /* ouvert = vers le bas */
-  }
-
-  /* Panneau */
-  .acc__panel{
-    font-size: 14px;
-    line-height: 1.45;
-    padding: 12px;
-  }
+  
 }
