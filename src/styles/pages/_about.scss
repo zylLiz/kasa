@@ -21,7 +21,7 @@
 
   /* Le wrapper force la largeur des accordéons enfants => n’impacte PAS les accordéons de la page Logement */
   .acc--wide .acc{
-    /*width: 100%;*/
+    width: 100%;
     max-width: 1023px;    /* maquette desktop À propos */
     margin: 0 auto 20px;
   }
